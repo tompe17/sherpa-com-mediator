@@ -368,7 +368,8 @@ void send_remote(mediator_t *self, json_msg_t *result, const char* group) {
 				json_decref(send_rqst);
 				return;
 			}
-			msg_req->msg = encode_msg(result->metamodel,result->model,result->type,send_rqst);
+                        // msg_req->msg = encode_msg(result->metamodel,result->model,result->type,send_rqst);
+                        msg_req->msg = encode_msg(result->metamodel,result->model,"send_remote",send_rqst);
 			zyre_shouts(self->remote, group, "%s", msg_req->msg);
 		}
 		printf("[%s] stored number of send_msg requests %zu",self->shortname, zlist_size(self->send_msgs));
